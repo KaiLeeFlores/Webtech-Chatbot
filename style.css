@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Creepster', cursive;
+  background: radial-gradient(circle at top, #1b0033 0%, #000 80%);
+  color: #ffb84d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+  color: #ff6b35;
+  text-shadow: 0 0 10px #ff4500, 0 0 25px #ff6b35;
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+#chat-container {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #ff4500;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 69, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+#messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #1a1a1a, #000000);
+  font-family: Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 80%;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: rgba(255, 107, 53, 0.2);
+  border: 1px solid #ff6b35;
+  color: #ffb385;
+  text-align: right;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ff4500;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+}
+
+.typing {
+  display: inline-block;
+  color: #ff6b35;
+  letter-spacing: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#input-area {
+  display: flex;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.9);
+  border-top: 1px solid #ff4500;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ff4500;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#user-input:focus {
+  border-color: #ffb84d;
+  box-shadow: 0 0 10px rgba(255, 184, 77, 0.6);
+}
+
+#send-btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #ff6b35;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Creepster', cursive;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#send-btn:hover {
+  background: #e55a2b;
+  transform: scale(1.05);
+}
+
+#send-btn:active {
+  transform: scale(0.95);
+}
+
+footer {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #ff944d;
+  text-shadow: 0 0 5px #ff4500;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  h2 { font-size: 2rem; }
+  #chat-container { height: 420px; }
+  #input-area { flex-direction: column; }
+  #send-btn { margin-left: 0; margin-top: 10px; }
+}
